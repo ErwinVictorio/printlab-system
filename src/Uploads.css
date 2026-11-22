@@ -1,0 +1,21 @@
+.upload-workspace { display:grid; gap:1rem; }
+.upload-context { display:flex; flex-wrap:wrap; align-items:center; gap:.55rem; color:#d9cbd8; }
+.upload-context strong { color:#fff; overflow-wrap:anywhere; }
+.upload-step-heading,.upload-original-heading { display:flex; align-items:center; gap:.8rem; }
+.upload-step-heading > div,.upload-original-heading > div { flex:1; min-width:0; overflow-wrap:anywhere; }
+.upload-step-heading p { color:#cec3cf; margin-top:.35rem; font-size:.9rem; }
+.upload-step-number,.upload-type-icon { display:grid; place-items:center; border-radius:.55rem; width:2.45rem; height:2.45rem; flex:none; background:#3d2135; color:#ffade0; font-weight:850; }
+.upload-status { display:inline-flex; align-items:center; gap:.3rem; border-radius:1.2rem; padding:.28rem .65rem; background:#392b1e; color:#ffe0a2; font-size:.78rem; font-weight:700; white-space:nowrap; }
+.upload-step-heading .upload-status { background:#262735; color:#e4ddf5; }
+.upload-status[data-ready=true] { background:#193b2e; color:#89e5b4; }
+.upload-file-picker,.upload-preview-picker { display:grid; gap:.45rem; border:1px dashed #79516f; border-radius:.7rem; padding:1rem; background:#201823; }
+.upload-file-picker > span,.upload-preview-picker > span { display:flex; align-items:center; gap:.5rem; font-weight:750; }
+.upload-file-picker input,.upload-preview-picker input { min-width:0; width:100%; }
+.upload-workspace input[type=file]::file-selector-button { margin-right:.65rem; padding:.3rem .55rem; border-radius:.35rem; background:#3e2540; color:white; cursor:pointer; }
+.upload-original { border:1px solid #403442; border-radius:.75rem; padding:1rem; background:#19151e; }
+.upload-empty { color:#cbc0cc; padding:1rem; border:1px dashed #554458; border-radius:.65rem; }
+@media(max-width:600px) {
+  .upload-step-heading,.upload-original-heading { flex-wrap:wrap; align-items:flex-start; }
+  .upload-status { white-space:normal; }
+}
+.upload-batch-controls { display:flex; flex-wrap:wrap; align-items:end; gap:.75rem; } .upload-batch-controls button { min-height:42px; }

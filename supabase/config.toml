@@ -1,0 +1,14 @@
+[functions.create-upload-url]
+verify_jwt = false
+
+[functions.confirm-upload]
+verify_jwt = false
+
+[functions.public-previews]
+verify_jwt = false
+
+[functions.delete-event]
+verify_jwt = false
+
+[functions.purchases]
+verify_jwt = false
