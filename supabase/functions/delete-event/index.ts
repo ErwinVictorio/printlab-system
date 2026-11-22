@@ -34,6 +34,18 @@ Deno.serve(endpoint(async (body, _userId, db) => {
       if (marked.error) throw marked.error
     }
     if (data.length < 10) {
+      const covers = db.storage.from('event-covers')
+      // Remove covers only after this event is hidden and its original files are cleaned up.
+      for (;;) {
+        const listing = await covers.list(eventId, { limit: 100 })
+        if (listing.error) throw listing.error
+        const paths = listing.data.filter((item) => /^[a-f0-9-]{36}\.(jpg|png|webp)$/.test(item.name))
+          .map((item) => `${eventId}/${item.name}`)
+        if (!paths.length) break
+        const removed = await covers.remove(paths)
+        if (removed.error) throw removed.error
+        if (listing.data.length < 100) break
+      }
       const finished = await db.rpc('finish_event_deletion', { target_event: eventId })
       if (finished.error) throw finished.error
       return reply({ deleted: true })
@@ -42,5 +54,6 @@ Deno.serve(endpoint(async (body, _userId, db) => {
 
   return reply({ deleted: false })
 }))
+
 
 
